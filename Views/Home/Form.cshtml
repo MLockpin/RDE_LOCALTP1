@@ -1,0 +1,75 @@
+﻿@model TPLOCAL1.Models.PersonalInformation
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="\resources\FichierCSS\Index.css" />
+    <title>HN - FORM</title>
+</head>
+<body>
+    <header>
+        <img src="/resources/GroupeHN.png" class="image" alt="GroupHN" />
+        <h1>Welcome to TP HN</h1>
+    </header>
+    <form asp-action="PersonalInformation">
+    <table>   
+        <tr>
+            <th>Name</th>
+            <td>               
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Forename</th>
+            <td>
+                <input asp-for="Forename" class="form-control" />
+                <span asp-validation-for="Forename" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td>
+                <select class="input-validation-error" id="Genre" name="Genre">
+                    <option value="">Select a genre</option>
+                    <option>M</option>
+                    <option>F</option>
+                    <option>Other</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Adress</th>
+            <td>
+                <input asp-for="Adress" class="form-control" />
+                <span asp-validation-for="Adress" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>ZipCode</th>
+            <td>
+                <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Town</th>
+            <td>
+                <input asp-for="Town" class="form-control" />
+                <span asp-validation-for="Town" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>EmailAddress</th>
+            <td>
+                <input asp-for="EmailAddress" class="form-control" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            </td>
+        </tr>       
+    </table>
+    <div class="form-group">
+            <input type="submit" value="Validate" class="btn btn-primary" />
+    </div>
+    </form>
+</body>
+</html>
