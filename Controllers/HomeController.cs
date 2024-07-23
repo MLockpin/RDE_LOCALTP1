@@ -25,10 +25,11 @@ namespace TPLOCAL1.Controllers
                         //TODO : code reading of the xml files provide
                         return View(id);
                     case "Form":
+                        var model = new PersonalInformation();
                         //TODO : call the Form view with data model empty
-                        return View(id);
+                        return View("Form", model);
                     default:
-                        //retourn to the Index view (see routing in Program.cs)
+                        //return to the Index view (see routing in Program.cs)
                         return View();
                 }
             }
@@ -37,12 +38,19 @@ namespace TPLOCAL1.Controllers
 
         //methode to send datas from form to validation page
         [HttpPost]
-        public ActionResult ValidationFormulaire(/*model*/)
+        public ActionResult ValidationFormulaire([Bind("Id,Name,Forename,Gender,Address,ZipCode,Town,EmailAddress,StartDateTraining,TypeTraining,CobolTraining,TrainingPurpose")] PersonalInformation personalInformation)
         {
+            if (ModelState.IsValid)
+            {
+                //_context.Add(movie);
+                //await _context.SaveChangesAsync();
+                return View("ValidationForm", personalInformation);
+            }
+            return View("Form", personalInformation);
             //TODO : test if model's fields are set
             //if not, display an error message and stay on the form page
             //else, call ValidationForm with the datas set by the user
-            return null;
+            //return null;
 
         }
     }

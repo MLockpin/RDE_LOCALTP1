@@ -1,5 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace TPLOCAL1.Models
 {
@@ -8,6 +11,7 @@ namespace TPLOCAL1.Models
         public int Id { get; set; }
 
         [StringLength(60, MinimumLength = 3)]
+        [Display(Name = "Name")]
         [Required]
         public string? Name { get; set; }
 
@@ -15,15 +19,22 @@ namespace TPLOCAL1.Models
         [Required]
         public string? Forename { get; set; }
 
-        [StringLength(60, MinimumLength = 3)]
+ 
         [Required]
         public string? Gender { get; set; }
+        public List<SelectListItem> Genders { get; } = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "", Text = "Select a Gender"},
+            new SelectListItem { Value = "Male", Text = "Male" },
+            new SelectListItem { Value = "Female", Text = "Female" },
+            new SelectListItem { Value = "Other", Text = "Other"  },
+        };
 
         [StringLength(60, MinimumLength = 3)]
         [Required]
-        public string? Adress { get; set; }
+        public string? Address { get; set; }
 
-        [StringLength(5)]
+        [RegularExpression(@"\d{5}")]
         [Required]
         public string? ZipCode { get; set; }
 
@@ -31,6 +42,7 @@ namespace TPLOCAL1.Models
         [Required]
         public string? Town { get; set; }
 
+        [Required]
         [DataType(DataType.EmailAddress)]
         public string? EmailAddress { get; set; }
 
