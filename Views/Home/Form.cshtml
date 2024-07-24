@@ -1,27 +1,15 @@
 ﻿@model TPLOCAL1.Models.PersonalInformation
-<!DOCTYPE html>
-
-<html>
-
-<head>
-    
-    <link rel="stylesheet" href="\resources\FichierCSS\Index.css" />
-    <title>HN - FORM</title>
-</head>
-<body>
-    <header>
-        <img src="/resources/GroupeHN.png" class="image" alt="GroupHN" />
-        <h1>Form TP HN opinion</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/Home/Index">Welcome Page</a></li>
-            <li><a href="/Home/AvisList">Avis List</a></li>
-        </ul>
-    </nav>
+    @{
+        ViewData["Title"] = "FORM";
+        ViewData["h1"] = "Form TP HN opinion";
+        ViewData["Link1"] = "/Home/Index";
+        ViewData["Link2"] = "/Home/Index/List";
+        ViewData["linkTitle1"] = "Welcome Page";
+        ViewData["linkTitle2"] = "Avis List";
+    }
     <section class="form">
         <form asp-action="ValidationFormulaire">
-            @Html.ValidationSummary(false,"")
+            @* @Html.ValidationSummary(false,"") *@
     <table>
             <caption>Personal Information</caption>
         <tr>
@@ -115,5 +103,3 @@
             
     </form>
     </section>
-</body>
-</html>

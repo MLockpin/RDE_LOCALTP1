@@ -1,0 +1,38 @@
+﻿@model TPLOCAL1.Models.OpinionList
+    @{
+        ViewData["Title"] = "List";
+        ViewData["h1"] = "List opinion";
+        ViewData["Link1"] = "/Home/Index";
+        ViewData["Link2"] = "/Home/Index/Form";
+        ViewData["linkTitle1"] = "Welcome Page";
+        ViewData["linkTitle2"] = "Form";
+    }
+    <section class="form">
+    <table>
+        <caption>List</caption>
+        <tr>
+            <th>Name</th>
+            <th>Forename</th>
+            <th>Opinion Given</th>
+        </tr>
+        @{
+            List<TPLOCAL1.Models.Opinion> _listOpinion = Model.GetAvis("XlmFile/DataAvis.xml");           
+        }                 
+        @foreach (var opinion in _listOpinion)
+        {
+            <tr>
+                <td>@opinion.LastName</td>
+                <td>@opinion.FirstName</td>
+                    @if (opinion.OpinionGiven == "O")
+                    {
+                        <td style="background-color: forestgreen">YES</td>
+                    }
+                
+                    else
+                    {
+                        <td style="background-color: red">NO</td>
+                    }               
+            </tr>
+        }
+    </table>
+    </section>

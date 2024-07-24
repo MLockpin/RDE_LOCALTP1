@@ -46,8 +46,10 @@ namespace TPLOCAL1.Models
         [DataType(DataType.EmailAddress)]
         public string? EmailAddress { get; set; }
 
-        [Display(Name = "Release Date")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Release Date")]
+        [Range(typeof(DateTime), "1/1/0001", "1/1/2021")]
         public DateTime StartDateTraining { get; set; }
 
         [StringLength(60, MinimumLength = 3)]

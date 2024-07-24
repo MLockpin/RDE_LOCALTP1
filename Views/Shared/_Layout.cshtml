@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="\resources\FichierCSS\Index.css" />
+    <title>HN - @ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/resources/FichierCSS/Index.css">
+</head>
+<body>
+    <header>
+        <img src="/resources/GroupeHN.png" class="image" alt="GroupHN" />
+        <h1>@ViewData["h1"]</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href=@ViewData["Link1"]>@ViewData["linkTitle1"]</a></li>
+            <li><a href=@ViewData["Link2"]>@ViewData["linkTitle2"]</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

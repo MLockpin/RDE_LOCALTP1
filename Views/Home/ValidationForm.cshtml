@@ -1,76 +1,57 @@
 ﻿@model TPLOCAL1.Models.PersonalInformation
-<!DOCTYPE html>
-
-<html>
-
-<head>
-
-    <link rel="stylesheet" href="\resources\FichierCSS\Index.css" />
-    <title>HN - FORM</title>
-</head>
-<body>
-    <header>
-        <img src="/resources/GroupeHN.png" class="image" alt="GroupHN" />
-        <h1>Form TP HN opinion</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/Home/Index">Welcome Page</a></li>
-            <li><a href="/Home/AvisList">Avis List</a></li>
-        </ul>
-    </nav>
-    <p style="text-align: center" > Your form has been taken into account</p>
-    <section class="form">
-        <form asp-action="ValidationFormulaire">
+    @{
+        ViewData["Title"] = "FORM Validation";
+        ViewData["h1"] = "Validation Page";
+        ViewData["Link1"] = "/Home/Index";
+        ViewData["Link2"] = "/Home/Index/List";
+        ViewData["linkTitle1"] = "Welcome Page";
+        ViewData["linkTitle2"] = "Avis List";
+    }
+    <p style="margin-left: 210px"> Your form has been taken into account</p>
+     <section class="form">
+@*         <form asp-action="ValidationFormulaire"> *@ 
             <table>
                 <caption>Personal Information</caption>
                 <tr>
                     <th>Name</th>
                     <td>
-                        <label asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
+                         @ViewData["Name"]                       
                     </td>
                 </tr>
                 <tr>
                     <th>Forename</th>
                     <td>
-                        <label asp-for="Forename" class="form-control" />
-                        <span asp-validation-for="Forename" class="text-danger"></span>
+                        @ViewData["Forename"]
                     </td>
                 </tr>
                 <tr>
                     <th>Gender</th>
                     <td>
-                        <label asp-for="Gender" asp-items="Model.Genders"></label>
-                        <span asp-validation-for="Gender" class="text-danger"></span>
+                        @ViewData["Gender"]
                     </td>
                 </tr>
                 <tr>
                     <th>Address</th>
                     <td>
-                        <label asp-for="Address" class="form-control" />
-                        <span asp-validation-for="Address" class="text-danger"></span>
+                        @ViewData["Address"]
                     </td>
                 </tr>
                 <tr>
                     <th>Zip Code</th>
                     <td>
-                        <label asp-for="ZipCode" class="form-control" />
-                        <span asp-validation-for="ZipCode" class="text-danger"></span>
+                        @ViewData["ZipCode"]
                     </td>
                 </tr>
                 <tr>
                     <th>Town</th>
                     <td>
-                        <label asp-for="Town" class="form-control" />
-                        <span asp-validation-for="Town" class="text-danger"></span>
+                        @ViewData["Town"]
                     </td>
                 </tr>
                 <tr>
                     <th>Email Address</th>
                     <td>
-                        <label asp-for="EmailAddress" class="form-control" />
-                        <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                        @ViewData["EmailAddress"]
                     </td>
                 </tr>
             </table>
@@ -79,15 +60,13 @@
                 <tr>
                     <th>Formation Debut Date</th>
                     <td>
-                        <label asp-for="StartDateTraining" class="form-control" />
-                        <span asp-validation-for="StartDateTraining" class="text-danger"></span>
+                        @ViewData["StartDateTraining"]
                     </td>
                 </tr>
                 <tr>
                     <th>Following Formation</th>
                     <td>
-                        <label asp-for="TypeTraining" class="form-control" />
-                        <span asp-validation-for="TypeTraining" class="text-danger"></span>
+                        @ViewData["TypeTraining"]
                     </td>
                 </tr>
             </table>
@@ -96,15 +75,13 @@
                 <tr>
                     <th>Formation COBOL</th>
                     <td>
-                        <label asp-for="CobolTraining" class="form-control" />
-                        <span asp-validation-for="CobolTraining" class="text-danger"></span>
+                        @ViewData["CobolTraining"]
                     </td>
                 </tr>
                 <tr>
                     <th>Formation C#</th>
                     <td>
-                        <label asp-for="TrainingPurpose" class="form-control" />
-                        <span asp-validation-for="TrainingPurpose" class="text-danger"></span>
+                        @ViewData["TrainingPurpose"]
                     </td>
                 </tr>
             </table>
@@ -113,7 +90,6 @@
                 <input type="submit" value="Validate" class="btn btn-primary" />
             </div>
 
-        </form>
+@*         </form> *@
     </section>
-</body>
-</html>
+

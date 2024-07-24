@@ -10,9 +10,11 @@ namespace TPLOCAL1.Controllers
 {
     public class HomeController : Controller
     {
+
         //methode "naturally" call by router
         public ActionResult Index(string id)
         {
+
             if (string.IsNullOrWhiteSpace(id))
                 //retourn to the Index view (see routing in Program.cs)
                 return View();
@@ -21,9 +23,11 @@ namespace TPLOCAL1.Controllers
                 //Call different pages, according to the id pass as parameter
                 switch (id)
                 {
-                    case "OpinionList":
+                    
+                    case "List":
+                        var model1 = new OpinionList();
                         //TODO : code reading of the xml files provide
-                        return View(id);
+                        return View(id, model1);
                     case "Form":
                         var model = new PersonalInformation();
                         //TODO : call the Form view with data model empty
@@ -42,8 +46,18 @@ namespace TPLOCAL1.Controllers
         {
             if (ModelState.IsValid)
             {
-                //_context.Add(movie);
-                //await _context.SaveChangesAsync();
+                ViewData["Name"] = personalInformation.Name;
+                ViewData["Forename"] = personalInformation.Forename;
+                ViewData["Gender"] = personalInformation.Gender;
+                ViewData["Address"] = personalInformation.Address;
+                ViewData["ZipCode"] = personalInformation.ZipCode;
+                ViewData["EmailAddress"] = personalInformation.EmailAddress;
+                ViewData["StartDateTraining"] = personalInformation.StartDateTraining.Day + "/" + personalInformation.StartDateTraining.Month + "/" + personalInformation.StartDateTraining.Year;
+                ViewData["TypeTraining"] = personalInformation.TypeTraining;
+                ViewData["CobolTraining"] = personalInformation.CobolTraining;
+                ViewData["TrainingPurpose"] = personalInformation.TrainingPurpose;
+                ViewData["Town"] = personalInformation.Town;
+
                 return View("ValidationForm", personalInformation);
             }
             return View("Form", personalInformation);
