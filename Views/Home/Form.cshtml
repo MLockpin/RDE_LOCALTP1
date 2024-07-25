@@ -74,7 +74,7 @@
         <tr>
             <th>Following Formation</th>
             <td>
-                <input asp-for="TypeTraining" class="form-control" />
+                <select asp-for="TypeTraining" asp-items="Model.TypesTraining"></select>
                 <span asp-validation-for="TypeTraining" class="text-danger"></span>
             </td>
         </tr>

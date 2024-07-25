@@ -10,12 +10,12 @@ namespace TPLOCAL1.Models
     {
         public int Id { get; set; }
 
-        [StringLength(60, MinimumLength = 3)]
+        [StringLength(60, MinimumLength = 3, ErrorMessage = "Name length have to be between 3 and 60 characters.")]
         [Display(Name = "Name")]
         [Required]
         public string? Name { get; set; }
 
-        [StringLength(60, MinimumLength = 3)]
+        [StringLength(60, MinimumLength = 3, ErrorMessage = "Forename length have to be between 3 and 60 characters.")]
         [Required]
         public string? Forename { get; set; }
 
@@ -34,7 +34,7 @@ namespace TPLOCAL1.Models
         [Required]
         public string? Address { get; set; }
 
-        [RegularExpression(@"\d{5}")]
+        [RegularExpression(@"\d{5}", ErrorMessage = "Zip Code have to be with 5 numbers.")]
         [Required]
         public string? ZipCode { get; set; }
 
@@ -49,22 +49,26 @@ namespace TPLOCAL1.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Release Date")]
-        [Range(typeof(DateTime), "1/1/0001", "1/1/2021")]
+        [Range(typeof(DateTime), "1/1/1900", "1/1/2021", ErrorMessage = "Date have to be between 01/01/1900 and 01/01/2021.")]
         public DateTime StartDateTraining { get; set; }
 
-        [StringLength(60, MinimumLength = 3)]
         [Required]
         public string? TypeTraining { get; set; }
+        public List<SelectListItem> TypesTraining { get; } = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "", Text = "Select a course"},
+            new SelectListItem { Value = "Cobol", Text = "Cobol Training" },
+            new SelectListItem { Value = "C#", Text = "Object training" },
+            new SelectListItem { Value = "Dual", Text = "Dual Skills Training"  },
+        };
 
         [StringLength(60, MinimumLength = 3)]
-        [Required]
+
         public string? CobolTraining { get; set; }
 
         [StringLength(60, MinimumLength = 3)]
-        [Required]
+ 
         public string? TrainingPurpose { get; set; }
 
-
-        //[RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
     }
 }
